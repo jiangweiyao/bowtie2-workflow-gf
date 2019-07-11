@@ -10,6 +10,6 @@ apps:
 
 - name: bowtie2-build
   repo: https://git.biotech.cdc.gov/geneflow-apps/bowtie2-build-2.2.9-gf.git
-  tag: '0.6'
-  folder: bowtie2-build-2.2.9-gf-0.6 
+  tag: '0.2'
+  folder: bowtie2-build-2.2.9-gf-0.2 
   asset: none

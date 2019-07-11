@@ -44,7 +44,7 @@ parameters:
 # steps
 steps:
   index:
-    app: apps/bowtie2-build-2.2.9-gf-0.6/app.yaml
+    app: apps/bowtie2-build-2.2.9-gf-0.2/app.yaml
     depend: []
     template:
       reference: '{workflow->reference}'
