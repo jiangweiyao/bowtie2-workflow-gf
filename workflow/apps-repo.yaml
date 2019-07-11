@@ -13,3 +13,10 @@ apps:
   tag: '0.2'
   folder: bowtie2-build-2.2.9-gf-0.2 
   asset: none
+
+- name: bowtie2-align
+  repo: https://git.biotech.cdc.gov/geneflow-apps/bowtie2-align-2.2.9-gf.git
+  tag: '0.2'
+  folder: bowtie2-align-2.2.9-gf-0.2
+  asset: none
+
