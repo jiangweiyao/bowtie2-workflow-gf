@@ -4,12 +4,12 @@ gfVersion: v1.0
 class: workflow
 
 # metadata
-name: BWA Workflow
-description: Sequence alignment with BWA
-documentation_uri: http://url/to/documentation.pdf
-repo_uri: 'https://gitlab.com/geneflow/workflows/workflow-template.git'
+name: Bowtie2 workflow
+description: Sequence alignment with Bowtie2
+documentation_uri: 
+repo_uri: 'https://github.com/jiangweiyao/bowtie2-workflow-gf.git'
 version: '0.1'
-username: user
+username: jyao
 
 final_output:
 - align
@@ -17,10 +17,10 @@ final_output:
 # inputs
 inputs:
   files:
-    label: Input Directory
-    description: Input directory containing FASTQ files
-    type: Directory
-    default: /input/files
+    label: Reference Sequence FASTA File
+    description: Reference Sequence FASTA File
+    type: File
+    default: /input/files.fastq
     enable: true
     visible: true
   reference:
@@ -44,22 +44,22 @@ parameters:
 # steps
 steps:
   index:
-    app: apps/bwa-index-0.7.17-gf-0.2/app.yaml
+    app: apps/bowtie2-build-2.2.9-gf-0.6/app.yaml
     depend: []
     template:
       reference: '{workflow->reference}'
       output: reference
 
-  align:
-    app: apps/bwa-mem-0.7.17-gf-0.3/app.yaml
-    depend: [ "index" ]
-    map:
-      uri: '{workflow->files}'
-      regex: (.*)_(R|)1(.*)\.((fastq|fq)(|\.gz))$
-    template:
-      input: '{workflow->files}/{1}_{2}1{3}.{4}'
-      pair: '{workflow->files}/{1}_{2}2{3}.{4}'
-      reference: '{index->output}/reference'
-      threads: '{workflow->threads}'
-      output: '{1}.sam'
+#  align:
+#    app: apps/bwa-mem-0.7.17-gf-0.3/app.yaml
+#    depend: [ "index" ]
+#    map:
+#      uri: '{workflow->files}'
+#      regex: (.*)_(R|)1(.*)\.((fastq|fq)(|\.gz))$
+#    template:
+#      input: '{workflow->files}/{1}_{2}1{3}.{4}'
+#      pair: '{workflow->files}/{1}_{2}2{3}.{4}'
+#      reference: '{index->output}/reference'
+#      threads: '{workflow->threads}'
+#      output: '{1}.sam'
 ...
